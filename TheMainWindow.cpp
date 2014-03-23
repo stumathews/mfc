@@ -1,6 +1,6 @@
 #include "TheMainWindow.h"
 
-TheMainWindow::TheMainWindow()
+TheMainWindow::TheMainWindow(void)
 {
 	// Ok, lets actually create ourselves, we are a CFrameWind after all!
 	Create(NULL, _T("My First MFC Window, Baby!"));
