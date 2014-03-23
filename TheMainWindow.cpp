@@ -1,6 +1,6 @@
 #include "TheMainWindow.h"
 
-TheMainWindow::TheMainWindow(void)
+TheMainWindow::TheMainWindow()
 {
 	// Ok, lets actually create ourselves, we are a CFrameWind after all!
 	Create(NULL, _T("My First MFC Window, Baby!"));
@@ -20,6 +20,21 @@ void TheMainWindow::OnPaint()
 
 }
 
+void TheMainWindow::OnLButtonDown(UINT nFlags, CPoint point)
+{
+	CRect rect;
+	GetClientRect(&rect);
+
+	CClientDC dc(this);
+
+	// Draws a line from each corner to its opposite opposite corner
+	
+	dc.MoveTo(rect.left, rect.top);
+	dc.LineTo(rect.right, rect.bottom);
+	dc.MoveTo(rect.right, rect.top);
+	dc.LineTo(rect.left, rect.bottom);
+}
+
 // This is a global declaration of the Applications, message map.
 // Note that to use this, you needed to have DECLARE_MESSAGE_MAP in the header,
 // because that defines functions in the class that this macro uses, specifically
@@ -27,4 +42,5 @@ void TheMainWindow::OnPaint()
 
 BEGIN_MESSAGE_MAP(TheMainWindow, CFrameWnd)
 	ON_WM_PAINT()  //this becomes TheMainWindow::OnPaint  - see code as &ThisClass OnPaint
+	ON_WM_LBUTTONDOWN()
 END_MESSAGE_MAP()
